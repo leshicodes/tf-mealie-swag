@@ -1,4 +1,5 @@
 # https://docs.docker.com/engine/install/ubuntu/
+
 sudo apt-get update -y
 sudo apt-get install ca-certificates curl gnupg -y
 sudo install -m 0755 -d /etc/apt/keyrings
@@ -15,7 +16,7 @@ sudo apt-get update -y
 sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin -y
 
 sudo groupadd docker
-usermod -aG docker #username
+sudo usermod -aG docker #username
 
 
 sudo systemctl enable docker && sudo systemctl restart docker
