@@ -4,6 +4,6 @@
 # mealie_config_dir = ""
 # swag_config_dir = ""
 
-mealie_fqdn = "home.jjambrose.info"
+mealie_fqdn = "raspi.jjambrose.info"
 
 mealie_contact_email = "mealie_contact_email"
