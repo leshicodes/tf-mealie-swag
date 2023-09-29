@@ -1,0 +1,18 @@
+# Terraform Directory and Files to ignore.
+.terraform/*
+.terraform
+.terraform.*
+*.tfstate
+*.local.hcl
+terraform.tfstate.*
+*.plan
+
+# Container Config Directory
+containers/*
+containers/nzbget/*
+
+# Misc File Definitions
+*.ignore
+*.log
+
+notes.txt
