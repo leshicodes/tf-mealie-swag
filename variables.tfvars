@@ -1,8 +1,8 @@
 # mealie_container_vers = ""
 # swag_container_vers = ""
 
-# mealie_config_dir = ""
-# swag_config_dir = ""
+mealie_config_dir = "/opt/containers/mealie-api/conf"
+mealie_config_dir = "/opt/containers/mealie-swag/conf"
 
 mealie_fqdn = "raspi.jjambrose.info"
 
