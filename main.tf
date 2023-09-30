@@ -21,10 +21,10 @@ resource "docker_image" "mealie_api" {
   keep_locally = true
 }
 
-resource "docker_image" "swag" {
-  name         = "ghcr.io/linuxserver/swag:${var.swag_container_vers}"
-  keep_locally = true
-}
+# resource "docker_image" "swag" {
+#   name         = "ghcr.io/linuxserver/swag:${var.swag_container_vers}"
+#   keep_locally = true
+# }
 # --- END Terraform Docker image resource definitions ---
 
 
