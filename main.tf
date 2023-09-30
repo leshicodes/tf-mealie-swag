@@ -21,10 +21,10 @@ resource "docker_image" "mealie_api" {
   keep_locally = true
 }
 
-# resource "docker_image" "swag" {
-#   name         = "ghcr.io/linuxserver/swag:${var.swag_container_vers}"
-#   keep_locally = true
-# }
+resource "docker_image" "swag" {
+  name         = "ghcr.io/linuxserver/swag:${var.swag_container_vers}"
+  keep_locally = true
+}
 # --- END Terraform Docker image resource definitions ---
 
 
@@ -59,44 +59,44 @@ resource "docker_container" "mealie_api" {
   # depends_on = [docker_container.kitchenowl]
 }
 
-# resource "docker_container" "swag" {
-#   name         = "mealie-swag"
-#   image        = docker_image.swag.image_id
-#   hostname     = "mealie-swag"
-#   restart      = "unless-stopped"
-#   must_run     = true
-#   domainname   = "mealie-swag"
-#   network_mode = "bridge"
-#   capabilities {
-#     add = [
-#       "NET_ADMIN"
-#       ]
-#   }
-#   env = [
-#     "PUID=${var.uid}",
-#     "PGID=${var.gid}",
-#     "TZ=${var.timezone}",
-#     "URL=${var.mealie_fqdn}",
-#     "EMAIL=${var.mealie_contact_email}",
-#     "VALIDATION=http",
-#     "MAX_WORKERS=1",
-#     "WEB_CONCURRENCY=1",
-#     "STAGING=false"
-#   ]
-#   ports {
-#     internal   = 80
-#     external = 80
-#   }
-#   ports {
-#     internal   = 443
-#     external = 443
-#   }
-#   volumes {
-#     host_path      = var.swag_config_dir
-#     container_path = "/config"
-#   }
-#   networks_advanced {
-#     name = docker_network.mealie_network.name
-#   }
-#   depends_on = [docker_container.mealie_api]
-# }
+resource "docker_container" "swag" {
+  name         = "mealie-swag"
+  image        = docker_image.swag.image_id
+  hostname     = "mealie-swag"
+  restart      = "unless-stopped"
+  must_run     = true
+  domainname   = "mealie-swag"
+  network_mode = "bridge"
+  capabilities {
+    add = [
+      "NET_ADMIN"
+      ]
+  }
+  env = [
+    "PUID=${var.uid}",
+    "PGID=${var.gid}",
+    "TZ=${var.timezone}",
+    "URL=${var.mealie_fqdn}",
+    "EMAIL=${var.mealie_contact_email}",
+    "VALIDATION=http",
+    "MAX_WORKERS=1",
+    "WEB_CONCURRENCY=1",
+    "STAGING=false"
+  ]
+  ports {
+    internal   = 80
+    external = 80
+  }
+  ports {
+    internal   = 443
+    external = 443
+  }
+  volumes {
+    host_path      = var.swag_config_dir
+    container_path = "/config"
+  }
+  networks_advanced {
+    name = docker_network.mealie_network.name
+  }
+  depends_on = [docker_container.mealie_api]
+}
