@@ -46,7 +46,7 @@ resource "docker_container" "mealie_api" {
     "BASE_URL=http://${var.mealie_fqdn}",
   ]
   ports {
-    internal   = 9000
+    internal = 9000
     external = 9925
   }
   volumes {
@@ -70,7 +70,7 @@ resource "docker_container" "swag" {
   capabilities {
     add = [
       "NET_ADMIN"
-      ]
+    ]
   }
   env = [
     "PUID=${var.uid}",
@@ -84,11 +84,11 @@ resource "docker_container" "swag" {
     "STAGING=false"
   ]
   ports {
-    internal   = 80
+    internal = 80
     external = 80
   }
   ports {
-    internal   = 443
+    internal = 443
     external = 443
   }
   volumes {
