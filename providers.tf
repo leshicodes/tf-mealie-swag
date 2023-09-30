@@ -7,6 +7,13 @@ terraform {
   }
 }
 
+
+# WINDOWS
+# provider "docker" {
+#   host = "npipe:////.//pipe//docker_engine"
+# }
+
+# UNIX / Linux
 provider "docker" {
-  host = "npipe:////.//pipe//docker_engine"
+  host = "unix:///var/run/docker.sock"
 }
