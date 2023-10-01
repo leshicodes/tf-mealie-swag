@@ -1,4 +1,4 @@
-# mealie_container_vers = ""
+mealie_container_vers = "nightly"
 swag_container_vers = "arm64v8-2.6.0"
 
 mealie_config_dir = "/opt/containers/mealie/conf"
