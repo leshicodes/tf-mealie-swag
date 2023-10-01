@@ -59,6 +59,14 @@ resource "docker_container" "mealie_api" {
   # depends_on = [docker_container.kitchenowl]
 }
 
+output "mealie_api_image_output" {
+  value = docker_container.mealie_api
+}
+
+output "mealie_api_container_output" {
+  value = docker_container.mealie_api
+}
+
 resource "docker_container" "swag" {
   name         = "mealie-swag"
   image        = docker_image.swag.image_id
@@ -99,4 +107,12 @@ resource "docker_container" "swag" {
     name = docker_network.mealie_network.name
   }
   depends_on = [docker_container.mealie_api]
+}
+
+output "mealie_swag_image_output" {
+  value = docker_image.swag
+}
+
+output "mealie_swag_container_output" {
+  value = docker_container.swag
 }
