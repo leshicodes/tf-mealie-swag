@@ -19,11 +19,13 @@ PROCESS {
         "plan" {
             terraform init
             terraform plan -var-file="variables.tfvars" -out "$tfPlanName"
+            (terraform output) | Out-File -Append -Path $TranscriptName
         }
 
         "apply" {
             terraform plan -var-file="variables.tfvars" -out "$tfPlanName"
             terraform apply "$tfPlanName"
+            (terraform output) | Out-File -Append -Path $TranscriptName
             # terraform -chdir="$ProjectDirectory" plan -var-file="$ProjectVarFilename" -out "$ProjectName.plan"
         }
         "destroy" {
